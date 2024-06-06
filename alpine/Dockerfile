@@ -58,6 +58,9 @@ RUN case "$(jlink --version 2>&1)" in \
       --no-man-pages \
       --no-header-files \
       --output /javaruntime
+# download docker cli and docker-compose
+
+RUN RUN apk --no-cache add docker-cli docker-cli-compose
 
 FROM alpine:"${ALPINE_TAG}" AS build
 
@@ -94,7 +97,7 @@ RUN apk add --no-cache \
 
 # setup SSH server
 RUN sed -i /etc/ssh/sshd_config \
-        -e 's/#PermitRootLogin.*/PermitRootLogin no/' \
+        -e 's/#PermitRootLogin.*/PermitRootLogin yes/' \
         -e 's/#PasswordAuthentication.*/PasswordAuthentication no/' \
         -e 's/#SyslogFacility.*/SyslogFacility AUTH/' \
         -e 's/#LogLevel.*/LogLevel INFO/' \
