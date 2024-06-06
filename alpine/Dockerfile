@@ -58,9 +58,6 @@ RUN case "$(jlink --version 2>&1)" in \
       --no-man-pages \
       --no-header-files \
       --output /javaruntime
-# download docker cli and docker-compose
-
-RUN apk --no-cache add docker-cli docker-cli-compose
 
 FROM alpine:"${ALPINE_TAG}" AS build
 
@@ -93,7 +90,9 @@ RUN apk add --no-cache \
     musl-locales \
     netcat-openbsd \
     openssh \
-    patch
+    patch \
+    docker-cli \
+    docker-cli-compose
 
 # setup SSH server
 RUN sed -i /etc/ssh/sshd_config \
