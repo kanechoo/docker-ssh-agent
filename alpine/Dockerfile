@@ -92,7 +92,8 @@ RUN apk add --no-cache \
     openssh \
     patch \
     docker-cli \
-    docker-cli-compose
+    docker-cli-compose \
+    docker-cli-buildx
 
 # setup SSH server
 RUN sed -i /etc/ssh/sshd_config \
