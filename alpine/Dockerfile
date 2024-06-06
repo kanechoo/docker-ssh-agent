@@ -60,7 +60,7 @@ RUN case "$(jlink --version 2>&1)" in \
       --output /javaruntime
 # download docker cli and docker-compose
 
-RUN RUN apk --no-cache add docker-cli docker-cli-compose
+RUN apk --no-cache add docker-cli docker-cli-compose
 
 FROM alpine:"${ALPINE_TAG}" AS build
 
